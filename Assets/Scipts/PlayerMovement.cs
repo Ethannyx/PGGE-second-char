@@ -102,6 +102,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Attack Pattern Switched");
         }
 
+        //Reload Animation
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+        if (mAnimator != null)
+        {
+            mAnimator.SetTrigger("Reload");
+        }
+        }
     }
 
 
@@ -155,10 +163,10 @@ public class PlayerMovement : MonoBehaviour
         // Ensure that the final position is exactly the target position
         transform.position = targetDownPosition;
 
-        yield return new WaitForSeconds(2.4f);
+        yield return new WaitForSeconds(1.0f);
 
         // Change the y value after the crouch animation is finished
-        Vector3 targetUpPosition = new Vector3(originalPosition.x, originalPosition.y + 0.5f, originalPosition.z);
+        Vector3 targetUpPosition = new Vector3(originalPosition.x, originalPosition.y, originalPosition.z);
         elapsedTime = 0f;
 
         while (elapsedTime < crouchDuration)

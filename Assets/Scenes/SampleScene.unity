@@ -229,15 +229,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6042ae77178364d90669957c6fea1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultFootstepSound: {fileID: 8300000, guid: 5bb06106cec36c04181358f3c4b39af8, type: 3}
-  alternativeFootstepSound: {fileID: 8300000, guid: 50a34dbd7ed276b4f97b4ecdd0b54afa, type: 3}
-  raycastDistance: 0.1
-  defaultLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  grassFootstepSound: {fileID: 8300000, guid: 5bb06106cec36c04181358f3c4b39af8, type: 3}
+  concreteFootstepSound: {fileID: 8300000, guid: 1e5a7755e67bd4846b9328d3ef05bf6c, type: 3}
+  metalFootstepSound: {fileID: 8300000, guid: 95d2e0f14698c0745b754f16a008cb44, type: 3}
+  raycastDistance: 0.2
   grassLayer:
     serializedVersion: 2
+    m_Bits: 8
+  concreteLayer:
+    serializedVersion: 2
     m_Bits: 64
+  metalLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!82 &10875531
 AudioSource:
   m_ObjectHideFlags: 0
@@ -250,7 +254,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.642
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -771,7 +775,7 @@ GameObject:
   - component: {fileID: 1120410374}
   - component: {fileID: 1120410373}
   - component: {fileID: 1120410372}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Grass (1)
   m_TagString: Grass
   m_Icon: {fileID: 0}
@@ -812,7 +816,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a07d8c842fd96744dbe199631fc80af5, type: 2}
+  - {fileID: 2100000, guid: a5b8db356319f054b91f25ba5b665d7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

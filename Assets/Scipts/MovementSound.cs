@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MovementSound : MonoBehaviour
 {
-    public AudioClip defaultFootstepSound;
-    public AudioClip alternativeFootstepSound;
+    public AudioClip grassFootstepSound;
+    public AudioClip concreteFootstepSound;
+    public AudioClip metalFootstepSound;
     public float raycastDistance = 0.1f;
-    public LayerMask defaultLayer;
     public LayerMask grassLayer;
+    public LayerMask concreteLayer;
+    public LayerMask metalLayer;
     AudioSource aud;
 
     // Start is called before the first frame update
@@ -27,15 +29,22 @@ public class MovementSound : MonoBehaviour
     {
         // Check if the object is on a specific layer
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, defaultLayer))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, grassLayer))
         {
             //Set the default footstep sound
-            aud.clip = defaultFootstepSound;
+            aud.Stop();
+            aud.clip = grassFootstepSound;
         }
-        else if ((Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, grassLayer)))
+        else if ((Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, concreteLayer)))
         {
             // if player is on grass
-            aud.clip = alternativeFootstepSound;
+            aud.Stop();
+            aud.clip = concreteFootstepSound;
+        }
+        else if ((Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, metalLayer)))
+        {
+            aud.Stop();
+            aud.clip = metalFootstepSound;
         }
 
         // Play the footstep sound
