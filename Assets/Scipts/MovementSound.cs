@@ -7,7 +7,7 @@ public class MovementSound : MonoBehaviour
     //Spaces in inspecter to set the different sounds for different layers
     public AudioClip grassFootstepSound;
     public AudioClip concreteFootstepSound;
-    public AudioClip metalFootstepSound;
+    public AudioClip woodFootstepSound;
 
     //Ray that detects the layer
     public float raycastDistance = 0.1f;
@@ -15,7 +15,7 @@ public class MovementSound : MonoBehaviour
     //Spaces in inspecter to set the different layers for detection
     public LayerMask grassLayer;
     public LayerMask concreteLayer;
-    public LayerMask metalLayer;
+    public LayerMask woodLayer;
 
     //audio source which will be storing and playing the clips
     AudioSource aud;
@@ -48,11 +48,11 @@ public class MovementSound : MonoBehaviour
             //aud.Stop();
             aud.clip = concreteFootstepSound;
         }
-        else if ((Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, metalLayer)))
+        else if ((Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, woodLayer)))
         {
             //if player is on wood
             //aud.Stop();
-            aud.clip = metalFootstepSound;
+            aud.clip = woodFootstepSound;
         }
         else
         {

@@ -19,12 +19,14 @@ public class Crouching : MonoBehaviour
         }
     }
 
+    //Triggers the crouch animation
     void Crouch()
     {
         mAnimator.SetBool("Crouch", true); 
         isCrouching = true;
     }
 
+    //Triggers the standing animation
     void unCrouch()
     {
         mAnimator.SetBool("Crouch", false); 

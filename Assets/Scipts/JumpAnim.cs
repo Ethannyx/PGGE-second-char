@@ -20,17 +20,20 @@ public class JumpAnim : MonoBehaviour
         mAnimator.SetTrigger("Jump");
 
         float elapsedTime = 0f;
+        //Sets the original position as character's current position
         Vector3 originalPosition = transform.position;
+        //Sets the targeted jump height by adding 1.0f to the y value
         Vector3 targetPosition = new Vector3(originalPosition.x, originalPosition.y + 1.0f, originalPosition.z);
 
+        //While the elapsed time is lower than the jump duration, player will slowly move towards the set Y value
         while (elapsedTime < jumpDuration)
         {
             transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / jumpDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // Ensure that the final position is exactly the target position
+        
+        //Make sure character has reached peak jump height
         transform.position = targetPosition;
     }
 
@@ -40,7 +43,9 @@ public class JumpAnim : MonoBehaviour
         mAnimator.SetTrigger("Landing");
 
         float elapsedTime = 0f;
+        //Sets the original position as character's current position
         Vector3 originalPosition = transform.position;
+        //Sets the targeted jump height by deducting 1.0f to the y value
         Vector3 targetDownPosition = new Vector3(originalPosition.x, originalPosition.y - 1.5f, originalPosition.z);
 
         // Move down
@@ -51,16 +56,17 @@ public class JumpAnim : MonoBehaviour
             yield return null;
         }
 
-        // Ensure that the final position is exactly the target down position
+        //Making sure the character has touched the floor
         transform.position = targetDownPosition;
 
-        // Delay before moving up
+        //Delay for animation to play
         yield return new WaitForSeconds(1.0f);
 
-        // Upward movement
+        //Moving the character back up and sets the targeted down height by deducting 1.0f to the y value
         Vector3 targetUpPosition = new Vector3(originalPosition.x, originalPosition.y - 1.0f, originalPosition.z);
         elapsedTime = 0f;
 
+        //While the elapsed time is lower than the jump duration, player will slowly move towards the set Y value
         while (elapsedTime < jumpDuration)
         {
             transform.position = Vector3.Lerp(targetDownPosition, targetUpPosition, elapsedTime / jumpDuration);
@@ -68,7 +74,7 @@ public class JumpAnim : MonoBehaviour
             yield return null;
         }
 
-        // Ensure that the final position is exactly the target up position
+        //Make sure that the character has landed
         transform.position = targetUpPosition;
 
         isJumping = false;

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class AttackPatterns : MonoBehaviour
 {
-
+    //Making variables call attack patterns
     private enum AttackPattern
     {
         Pattern1,
         Pattern2
     }
+
+    //Setting the default attack pattern
     private AttackPattern currentAttackPattern = AttackPattern.Pattern1;
     public Animator mAnimator; 
     
+    //In main script, presses E to call this function and then switches the attack
     public void SwitchPattern()
     {
-        // Toggle between attack patterns (Pattern1 and Pattern2)
         if (currentAttackPattern == AttackPattern.Pattern1)
         {
             currentAttackPattern = AttackPattern.Pattern2;
@@ -26,9 +28,9 @@ public class AttackPatterns : MonoBehaviour
         }
     }
 
+    //Triggers the animation based on the attack pattern
     public void PlayAttackPattern()
     {
-        // Checks the current attack pattern and trigger the corresponding animation
         if (currentAttackPattern == AttackPattern.Pattern1)
         {
             mAnimator.SetTrigger("Punch");

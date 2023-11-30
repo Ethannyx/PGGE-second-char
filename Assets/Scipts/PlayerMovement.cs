@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public CharacterController mCharacterController;
     public Animator mAnimator;
+    
+    //Sets ammo value
     public int currentammo = 4;
 
     //Walking
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         mCharacterController = GetComponent<CharacterController>();
+        //Getting the functions from the other scripts
         jumplanding = GetComponent<JumpAnim>();
         attacking = GetComponent<AttackPatterns>();
         crouch = GetComponent<Crouching>();
@@ -43,15 +46,17 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = mWalkSpeed * 2.0f;
         }   
+
         //running front walking back movement
         if (mAnimator == null) return;
-        transform.Rotate(0.0f, hInput * mRotationSpeed * Time.deltaTime,
-        0.0f);
-        Vector3 forward =
-        transform.TransformDirection(Vector3.forward).normalized;
+        //Rotates the character in the speed of the rotation speed
+        transform.Rotate(0.0f, hInput * mRotationSpeed * Time.deltaTime, 0.0f);
+        Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
+        //Make sure the character does not fly
         forward.y = 0.0f;
-        mCharacterController.Move(forward * vInput * speed *
-        Time.deltaTime);
+        //Moves the character forward using VInput and forward input
+        mCharacterController.Move(forward * vInput * speed *Time.deltaTime);
+        //Set the floats in the animator for the animations to play
         mAnimator.SetFloat("PosX", hInput * speed / (2.0f * mWalkSpeed));
         mAnimator.SetFloat("PosZ", vInput * speed / (2.0f * mWalkSpeed));
 
@@ -68,33 +73,39 @@ public class PlayerMovement : MonoBehaviour
         {
             crouch.ToggleCrouch();
         }
-
-        //Attack animation
         }
+
+        //Attack animation       
         if (Input.GetMouseButtonDown(0))
         {
             if (mAnimator != null)
             {
+                //Checks if current ammo is more than zero
                if (currentammo > 0)
                 {
+                    //plays animation if there is still ammo left
                     attacking.PlayAttackPattern();
+                    //Reduces amount of ammo after attacking by 1
                     currentammo = Mathf.Max(0, currentammo - 1);
+                    //Stating the amount of ammo left
                     Debug.Log("current ammo is " + currentammo);
                 }
                 else
                 {
+                    //Cancels playing of the animation and asks for reload as there is no more ammo
                     Debug.Log("Please reload");
                 }
             }
         }
 
+        //Input to detect for switch of attack pattern
         if (Input.GetKeyDown(KeyCode.E))
         {
             attacking.SwitchPattern();
             Debug.Log("Attack Pattern Switched");
         }
 
-        //Reload Animation
+        //Reload Animation and reset ammo count to 4
         if (Input.GetKeyDown(KeyCode.R))
         {
         if (mAnimator != null)

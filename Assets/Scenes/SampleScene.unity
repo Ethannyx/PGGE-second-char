@@ -200,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mCharacterController: {fileID: 0}
   mAnimator: {fileID: 10875526}
+  currentammo: 4
   mWalkSpeed: 3
   mRotationSpeed: 80
 --- !u!143 &10875528
@@ -234,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grassFootstepSound: {fileID: 8300000, guid: 5bb06106cec36c04181358f3c4b39af8, type: 3}
   concreteFootstepSound: {fileID: 8300000, guid: 1e5a7755e67bd4846b9328d3ef05bf6c, type: 3}
-  metalFootstepSound: {fileID: 8300000, guid: 95d2e0f14698c0745b754f16a008cb44, type: 3}
+  woodFootstepSound: {fileID: 8300000, guid: 95d2e0f14698c0745b754f16a008cb44, type: 3}
   raycastDistance: 0.2
   grassLayer:
     serializedVersion: 2
@@ -242,7 +243,7 @@ MonoBehaviour:
   concreteLayer:
     serializedVersion: 2
     m_Bits: 64
-  metalLayer:
+  woodLayer:
     serializedVersion: 2
     m_Bits: 128
 --- !u!82 &10875531
