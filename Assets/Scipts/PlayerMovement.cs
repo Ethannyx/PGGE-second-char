@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
         if (mAnimator != null)
         {
-            StartCoroutine(CrouchAnimation());   
+            mAnimator.SetTrigger("Crouch");  
         }
 
         //Attack animation
@@ -111,11 +111,6 @@ public class PlayerMovement : MonoBehaviour
         }
         }
     }
-
-
-
-
-
 
     //Switches the current attack pattern
     void SwitchAttackPattern()
