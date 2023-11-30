@@ -139,6 +139,9 @@ GameObject:
   - component: {fileID: 10875531}
   - component: {fileID: 10875532}
   - component: {fileID: 10875533}
+  - component: {fileID: 10875534}
+  - component: {fileID: 10875535}
+  - component: {fileID: 10875536}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -367,6 +370,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.711232, z: 1}
   m_Center: {x: 0, y: 0.8663124, z: 0}
+--- !u!114 &10875534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10875524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961dfec936518f146baa4a010871f2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isJumping: 0
+  jumpDuration: 0.2
+  mAnimator: {fileID: 10875526}
+--- !u!114 &10875535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10875524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1c4bbffccb65a4eab266d88a26cc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mAnimator: {fileID: 10875526}
+--- !u!114 &10875536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10875524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c85ed682635be142bd4e326146f795a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCrouching: 0
+  mAnimator: {fileID: 10875526}
 --- !u!1 &612511038
 GameObject:
   m_ObjectHideFlags: 0
